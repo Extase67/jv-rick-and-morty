@@ -21,7 +21,7 @@ public class CharacterServiceImpl implements CharacterService {
     @PostConstruct
     public void init() {
         ApiResponse response = restTemplate.getForObject(API_URL, ApiResponse.class);
-        if (response == null) {
+        if (response != null) {
             for (CharacterDto dto : response.getResults()) {
                 CharacterEntity characterEntity = new CharacterEntity();
                 characterEntity.setExternalId(dto.getId().toString());
